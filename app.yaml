@@ -1,5 +1,5 @@
 application: angular-material-gae-seed
-version: 1
+version: 2
 runtime: python27
 threadsafe: true
 api_version: 1
@@ -17,6 +17,9 @@ handlers:
 
 - url: /js
   static_dir: app/js
+
+- url: /font
+  static_dir: app/font
 
 - url: /app
   static_dir: app
