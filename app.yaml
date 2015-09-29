@@ -19,3 +19,5 @@ handlers:
 - url: (.*)
   static_files: app\1
   upload: app
+
+
