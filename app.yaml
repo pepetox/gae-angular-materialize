@@ -12,6 +12,15 @@ handlers:
 - url: /rest/.*
   script: main.APP
 
+- url: /css
+  static_dir: app/css
+
+- url: /js
+  static_dir: app/js
+
+- url: /app
+  static_dir: app
+
 - url: (.*)/
   static_files: app\1/index.html
   upload: app
@@ -19,5 +28,7 @@ handlers:
 - url: (.*)
   static_files: app\1
   upload: app
+
+
 
 
