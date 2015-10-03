@@ -11,6 +11,7 @@ handlers:
 
 - url: /rest/.*
   script: main.APP
+  login: required
 
 - url: /css
   static_dir: app/css
@@ -23,14 +24,17 @@ handlers:
 
 - url: /app
   static_dir: app
+  login: required
 
 - url: (.*)/
   static_files: app\1/index.html
   upload: app
+  login: required
 
 - url: (.*)
   static_files: app\1
   upload: app
+  login: required
 
 
 

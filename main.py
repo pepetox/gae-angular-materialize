@@ -17,7 +17,7 @@ import json
 import model
 
 import webapp2
-
+from google.appengine.api import users
 
 def AsDict(guest):
     return {'id': guest.key.id(), 'first': guest.first, 'last': guest.last}
@@ -66,6 +66,18 @@ class DeleteHandler(RestHandler):
         r = json.loads(self.request.body)
         model.DeleteGuest(r['id'])
 
+class GetUser(RestHandler):
+
+    def get(self):
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+        r = {user: user, url: url, url_linktext: url_linktext}
+        self.SendJson(r)
 
 APP = webapp2.WSGIApplication([
     ('/rest/query', QueryHandler),
