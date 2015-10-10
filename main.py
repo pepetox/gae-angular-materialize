@@ -71,12 +71,14 @@ class GetUser(RestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
+            email = user.email()
             url = users.create_logout_url(self.request.uri)
             url_linktext = 'Logout'
         else:
+            email = ''
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
-        r = {user: user, url: url, url_linktext: url_linktext}
+        r = {'user': email, 'url': url, 'url_linktext': url_linktext}
         self.SendJson(r)
 
 APP = webapp2.WSGIApplication([
@@ -84,4 +86,5 @@ APP = webapp2.WSGIApplication([
     ('/rest/insert', InsertHandler),
     ('/rest/delete', DeleteHandler),
     ('/rest/update', UpdateHandler),
+    ('/rest/user', GetUser),
 ], debug=True)
