@@ -1,6 +1,6 @@
 var App = angular.module('App.controllers', [])
 
-App.controller('MainCtrl', function($scope, $rootScope, $log, $http, $routeParams, $location, $route) {
+App.controller('MainCtrl', function($scope, $rootScope, $log, $http, $routeParams, $location, $route, userService) {
 
   $scope.invite = function() {
     $location.path('/invite');
@@ -23,6 +23,8 @@ App.controller('MainCtrl', function($scope, $rootScope, $log, $http, $routeParam
       $rootScope.status = '';
     });
   };
+
+
 
 });
 

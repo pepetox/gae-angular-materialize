@@ -26,3 +26,15 @@ Services.factory('courseService', function($rootScope, $http, $q, $log) {
   });
   return deferred.promise;
 });
+
+Services.factory('userService', function($rootScope, $http, $q, $log) {
+  $rootScope.status = 'Retrieving data...';
+  var deferred = $q.defer();
+  $http.get('rest/user')
+  .success(function(data, status, headers, config) {
+    $rootScope.user = data;
+    deferred.resolve();
+    $rootScope.status = '';
+  });
+  return deferred.promise;
+});

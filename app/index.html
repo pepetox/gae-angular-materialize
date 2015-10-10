@@ -17,7 +17,7 @@
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   </head>
-  <body>
+  <body ng-controller="MainCtrl">
     
     
 
@@ -26,6 +26,7 @@
         <ul class="right hide-on-med-and-down">
           <li><a href="http://pepetox.com/">pepetox.com</a></li>
           <li><a href="https://github.com/pepetox/gae-angular-materialize">Get the code</a></li>
+          <li><a href="{{ user.url }}" class="btn">{{ user.url_linktext }}</a></li>
 
         </ul>
 
