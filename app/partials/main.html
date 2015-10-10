@@ -1,9 +1,9 @@
 <h2 class="header center orange-text">Courses list</h2>
 <button ng-click="invite()" class="row btn-large waves-effect waves-light pink">Create another course</button>
 <div class="row" ng-repeat="course in courses | orderBy:'last' | orderBy:'first'">
-  {{ $index + 1 }}. <b class="col s6">{{ course.name }} {{ course.name }}</b>
-  <button ng-click="delete(guest)" class="btn-large waves-effect waves-light green">delete</button>
-  <button ng-click="update(guest)" class="btn-large waves-effect waves-light orange">update</button>
+   <b class="col s6"> {{ $index + 1 }}. {{ course.name }} - {{ course.description }} - {{ course.lang }}</b>
+  <button ng-click="delete(course)" class="btn-large waves-effect waves-light green">delete</button>
+  <button ng-click="update(course)" class="btn-large waves-effect waves-light orange">update</button>
 </div>
 
 

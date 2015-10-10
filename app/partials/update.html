@@ -1,16 +1,20 @@
-<h2 class="header center orange-text">Update guest information</h2>
+<h2 class="header center orange-text">Update course information</h2>
 <form ng-submit="submitUpdate()">
   <p>
-    <label>Id:</label>
-    <input type="text" ng-model="guest.id" disabled="true" />
+    <label>key:</label>
+    <input type="text" ng-model="course.key" disabled="true" />
   </p>
   <p>
-    <label>First:</label>
-    <input type="text" ng-model="guest.first" autofocus="true" />
+    <label>Name:</label>
+    <input type="text" ng-model="course.name" autofocus="true" />
   </p>
   <p>
-    <label>Last:</label>
-    <input type="text"  ng-model="guest.last" />
+    <label>Description:</label>
+    <input type="text"  ng-model="course.description" />
+  </p>
+  <p>
+    <label>Lang:</label>
+    <input type="text"  ng-model="course.lang" />
   </p>
   <input type="submit" class="btn-large waves-effect waves-light orange" />
 </form>

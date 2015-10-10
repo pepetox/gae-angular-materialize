@@ -30,13 +30,14 @@ def All():
 
 def Get(key):
     logging.info('lanzado el get')
-    return key.get()
+    my_key = ndb.Key(urlsafe=key)
+    return my_key.get()
 
 def Update(key, name, description, lang):
-    
+    logging.info('lanzado el update')
     user = users.get_current_user()
     if user:
-        #strong consistent version
+        
         course = Get(key)
         course.name = name
         course.description = description
@@ -57,8 +58,8 @@ def Insert(name, description, lang):
         return course
 
 def Delete(key):
-
-    key.delete()
+    my_key = ndb.Key(urlsafe=key)
+    my_key.delete()
 
 
 def Import(my_csv):

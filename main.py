@@ -23,6 +23,7 @@ def AsDict(course):
     
     return {
         
+        'key': course.key.urlsafe(),
         'author': course.author.email(),
         'name': course.name,
         'description': course.description,
@@ -54,7 +55,7 @@ class UpdateHandler(RestHandler):
 
     def post(self):
         r = json.loads(self.request.body)
-        guest = model.UpdateGuest(r['name'], r['first'], r['last'])
+        guest = model.Update(r['key'], r['name'], r['description'], r['lang'])
         r = AsDict(guest)
         self.SendJson(r)
 
@@ -72,7 +73,7 @@ class DeleteHandler(RestHandler):
 
     def post(self):
         r = json.loads(self.request.body)
-        model.DeleteGuest(r['id'])
+        model.Delete(r['key'])
 
 class GetUser(RestHandler):
 

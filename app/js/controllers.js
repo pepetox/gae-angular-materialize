@@ -6,17 +6,17 @@ App.controller('MainCtrl', function($scope, $rootScope, $log, $http, $routeParam
     $location.path('/invite');
   };
 
-  $scope.update = function(guest) {
-    $location.path('/update/' + guest.id);
+  $scope.update = function(course) {
+    $location.path('/update/' + course.key);
   };
 
-  $scope.delete = function(guest) {
-    $rootScope.status = 'Deleting guest ' + guest.id + '...';
-    $http.post('/rest/delete', {'id': guest.id})
+  $scope.delete = function(course) {
+    $rootScope.status = 'Deleting guest ' + course.name + '...';
+    $http.post('/rest/delete', {'key': course.key})
     .success(function(data, status, headers, config) {
-      for (var i=0; i<$rootScope.guests.length; i++) {
-        if ($rootScope.guests[i].id == guest.id) {
-          $rootScope.guests.splice(i, 1);
+      for (var i=0; i<$rootScope.courses.length; i++) {
+        if ($rootScope.courses[i].key == course.key) {
+          $rootScope.courses.splice(i, 1);
           break;
         }
       }
@@ -46,23 +46,23 @@ App.controller('InsertCtrl', function($scope, $rootScope, $log, $http, $routePar
 
 App.controller('UpdateCtrl', function($routeParams, $rootScope, $scope, $log, $http, $location) {
 
-  for (var i=0; i<$rootScope.guests.length; i++) {
-    if ($rootScope.guests[i].id == $routeParams.id) {
-      $scope.guest = angular.copy($rootScope.guests[i]);
+  for (var i=0; i<$rootScope.courses.length; i++) {
+    if ($rootScope.courses[i].key == $routeParams.key) {
+      $scope.course = angular.copy($rootScope.courses[i]);
     }
   }
 
   $scope.submitUpdate = function() {
     $rootScope.status = 'Updating...';
-    $http.post('/rest/update', $scope.guest)
+    $http.post('/rest/update', $scope.course)
     .success(function(data, status, headers, config) {
-      for (var i=0; i<$rootScope.guests.length; i++) {
-        if ($rootScope.guests[i].id == $scope.guest.id) {
-          $rootScope.guests.splice(i,1);
+      for (var i=0; i<$rootScope.courses.length; i++) {
+        if ($rootScope.courses[i].key == $scope.course.key) {
+          $rootScope.courses.splice(i,1);
           break;
         }
       }
-      $rootScope.guests.push(data);
+      $rootScope.courses.push(data);
       $rootScope.status = '';
     });
     $location.path('/');

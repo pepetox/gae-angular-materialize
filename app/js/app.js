@@ -15,7 +15,7 @@ App.config(function($routeProvider) {
     controller : 'InsertCtrl',
     templateUrl: '/partials/insert.html',
   });
-  $routeProvider.when('/update/:id', {
+  $routeProvider.when('/update/:key', {
     controller : 'UpdateCtrl',
     templateUrl: '/partials/update.html',
     resolve    : { 'courseService': 'courseService' },
