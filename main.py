@@ -14,7 +14,7 @@
 
 import json
 
-import model
+import modelCourse as model
 
 import webapp2
 from google.appengine.api import users
