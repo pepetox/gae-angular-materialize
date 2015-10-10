@@ -29,14 +29,15 @@ App.controller('MainCtrl', function($scope, $rootScope, $log, $http, $routeParam
 App.controller('InsertCtrl', function($scope, $rootScope, $log, $http, $routeParams, $location, $route) {
 
   $scope.submitInsert = function() {
-    var guest = {
-      first : $scope.first,
-      last : $scope.last, 
+    var course = {
+      name : $scope.name,
+      description : $scope.description,
+      lang :  $scope.lang
     };
     $rootScope.status = 'Creating...';
-    $http.post('/rest/insert', guest)
+    $http.post('/rest/insert', course)
     .success(function(data, status, headers, config) {
-      $rootScope.guests.push(data);
+      $rootScope.courses.push(data);
       $rootScope.status = '';
     });
     $location.path('/');

@@ -19,8 +19,16 @@ import modelCourse as model
 import webapp2
 from google.appengine.api import users
 
-def AsDict(guest):
-    return {'id': guest.key.id(), 'first': guest.first, 'last': guest.last}
+def AsDict(course):
+    
+    return {
+        
+        'author': course.author.email(),
+        'name': course.name,
+        'description': course.description,
+        'lang': course.lang
+
+    }
 
 
 class RestHandler(webapp2.RequestHandler):
@@ -37,8 +45,8 @@ class RestHandler(webapp2.RequestHandler):
 class QueryHandler(RestHandler):
 
     def get(self):
-        guests = model.AllGuests()
-        r = [AsDict(guest) for guest in guests]
+        courses = model.All()
+        r = [AsDict(course) for course in courses]
         self.SendJson(r)
 
 
@@ -46,7 +54,7 @@ class UpdateHandler(RestHandler):
 
     def post(self):
         r = json.loads(self.request.body)
-        guest = model.UpdateGuest(r['id'], r['first'], r['last'])
+        guest = model.UpdateGuest(r['name'], r['first'], r['last'])
         r = AsDict(guest)
         self.SendJson(r)
 
@@ -55,8 +63,8 @@ class InsertHandler(RestHandler):
 
     def post(self):
         r = json.loads(self.request.body)
-        guest = model.InsertGuest(r['first'], r['last'])
-        r = AsDict(guest)
+        course = model.Insert(r['name'], r['description'], r['lang'])
+        r = AsDict(course)
         self.SendJson(r)
 
 

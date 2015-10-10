@@ -15,12 +15,12 @@ Services.factory('myHttpInterceptor', function($rootScope, $q) {
   };
 });
 
-Services.factory('guestService', function($rootScope, $http, $q, $log) {
+Services.factory('courseService', function($rootScope, $http, $q, $log) {
   $rootScope.status = 'Retrieving data...';
   var deferred = $q.defer();
   $http.get('rest/query')
   .success(function(data, status, headers, config) {
-    $rootScope.guests = data;
+    $rootScope.courses = data;
     deferred.resolve();
     $rootScope.status = '';
   });

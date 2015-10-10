@@ -9,7 +9,7 @@ App.config(function($routeProvider) {
   $routeProvider.when('/', {
     controller : 'MainCtrl',
     templateUrl: '/partials/main.html',
-    resolve    : { 'guestService': 'guestService' },
+    resolve    : { 'courseService': 'courseService' },
   });
   $routeProvider.when('/invite', {
     controller : 'InsertCtrl',
@@ -18,7 +18,7 @@ App.config(function($routeProvider) {
   $routeProvider.when('/update/:id', {
     controller : 'UpdateCtrl',
     templateUrl: '/partials/update.html',
-    resolve    : { 'guestService': 'guestService' },
+    resolve    : { 'courseService': 'courseService' },
   });
   $routeProvider.otherwise({
     redirectTo : '/'

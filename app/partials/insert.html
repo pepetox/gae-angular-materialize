@@ -1,12 +1,16 @@
-<h2 class="header center orange-text">Invite another guest</h2>
+<h2 class="header center orange-text">Create a new course</h2>
 <form ng-submit="submitInsert()">
   <p>
-    <label>First:</label>
-    <input type="text" ng-model="first" autofocus="true" />
+    <label>Name:</label>
+    <input type="text" ng-model="name" autofocus="true" />
   </p>
   <p>
-    <label>Last:</label>
-    <input type="text"  ng-model="last" />
+    <label>Description:</label>
+    <input type="text"  ng-model="description" />
+  </p>
+  <p>
+    <label>Lang:</label>
+    <input type="text"  ng-model="lang" />
   </p>
   <input type="submit" class="btn-large waves-effect waves-light orange" />
 </form>

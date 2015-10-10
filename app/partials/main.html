@@ -1,7 +1,7 @@
-<h2 class="header center orange-text">Guest list</h2>
-<button ng-click="invite()" class="row btn-large waves-effect waves-light pink">Invite another guest</button>
-<div class="row" ng-repeat="guest in guests | orderBy:'last' | orderBy:'first'">
-  {{ $index + 1 }}. <b class="col s6">{{ guest.first }} {{ guest.last }}</b>
+<h2 class="header center orange-text">Courses list</h2>
+<button ng-click="invite()" class="row btn-large waves-effect waves-light pink">Create another course</button>
+<div class="row" ng-repeat="course in courses | orderBy:'last' | orderBy:'first'">
+  {{ $index + 1 }}. <b class="col s6">{{ course.name }} {{ course.name }}</b>
   <button ng-click="delete(guest)" class="btn-large waves-effect waves-light green">delete</button>
   <button ng-click="update(guest)" class="btn-large waves-effect waves-light orange">update</button>
 </div>
