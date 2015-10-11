@@ -27,7 +27,8 @@ def AsDict(course):
         'author': course.author.email(),
         'name': course.name,
         'description': course.description,
-        'lang': course.lang
+        'lang': course.lang,
+        'date': course.date.strftime("%B %d, %Y")
 
     }
 
@@ -36,7 +37,12 @@ class RestHandler(webapp2.RequestHandler):
 
     def dispatch(self):
         # time.sleep(1)
-        super(RestHandler, self).dispatch()
+        if (users.get_current_user().email() == 'test@example.com') | (users.get_current_user().email() == 'pepetox@gmail.com'):
+            super(RestHandler, self).dispatch()
+        else:
+
+            self.abort(402)
+        
 
     def SendJson(self, r):
         self.response.headers['content-type'] = 'text/plain'

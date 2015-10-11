@@ -1,9 +1,53 @@
+
+<div class="row center">
+      <div class="container">
 <h2 class="header center orange-text">Courses list</h2>
-<button ng-click="invite()" class="row btn-large waves-effect waves-light pink">Create another course</button>
-<div class="row" ng-repeat="course in courses | orderBy:'last' | orderBy:'first'">
-   <b class="col s6"> {{ $index + 1 }}. {{ course.name }} - {{ course.description }} - {{ course.lang }}</b>
-  <button ng-click="delete(course)" class="btn-large waves-effect waves-light green">delete</button>
-  <button ng-click="update(course)" class="btn-large waves-effect waves-light orange">update</button>
-</div>
+          
+     <table>
+        <thead>
+          <tr>
+              <th data-field="id">Name</th>
+              <th data-field="name">Description</th>
+              <th data-field="name">Language</th>
+              <th data-field="name">Author</th>
+              <th data-field="name">Actions</th>
+              
+          </tr>
+        </thead>
+        <tbody>
+
+
+          
+          <span>
+          <tr class="row" ng-repeat="course in courses | orderBy:'-date'">
+            <td>{{ course.name }}</td>
+            <td>{{ course.description }}</td>
+            <td>{{ course.lang }}</td>
+
+            <td><span ng-if="course.author">{{ course.author }}</span></td>
+            <td><a href=""  ng-click="show(course)">Show</a> | <a href=""  ng-click="update(course)">Edit</a>
+            
+             | <a  href="" ng-click="delete(course)" >Destroy</td>
+            </span>
+
+          </tr>
+
+          </tbody>
+          </table>
+          <button ng-click="invite()" class="row btn-large waves-effect waves-light pink">Create another course</button>
+          <!-- <p href="/courses/download">Export CSV</p> -->
+      </div>
+      <div class="container">
+      <br>
+<!--           <form name="importFile" action="/courses/upload" 
+          enctype="multipart/form-data" method="post"> 
+                <p>CSV File(Comma Separated Value) File*: <input type="file" 
+          name="csv"/> 
+                <input type="submit" value="Upload" class="btn btn-large btn-primary"> |
+          <a href="/courses/download" class="btn btn-large btn-primary">Export CSV</a></p> -->
+
+          </form> 
+      </div>
+  </div>
 
 
